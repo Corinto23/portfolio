@@ -32,6 +32,10 @@ const images = [
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const handleImageClick = (index) => {
+    window.open(images[index].link, "_blank");
+  };
+
   return (
     <div className="h-screen" id="projects">
       <div className="px-4 pt-2">
@@ -67,7 +71,12 @@ const Projects = () => {
             transitionTime={500}
           >
             {images.map((item, index) => (
-              <div className="flex md:h-72 lg:h-96" key={index}>
+              <div
+                className="flex md:h-72 lg:h-96"
+                key={index}
+                onClick={() => handleImageClick(index)}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   className="object-contain"
                   src={item.image}
